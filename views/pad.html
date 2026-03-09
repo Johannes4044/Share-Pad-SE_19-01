@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Pad - my-note</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-content">
+    <div class="pad-container">
+      <div class="pad-editor">
+        <textarea id="pad-textarea" placeholder="Start typing your note..."></textarea>
+      </div>
+      <div class="pad-info">
+        <h2>my-note</h2>
+        <p>Status: Unsaved</p>
+        <button class="btn btn-primary" type="button">Save</button>
+      </div>
+    </div>
+  </div>
+  <nav class="nav-bar">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+  </nav>
+  <script>
+    const padName = window.location.pathname.slice(1);
+    document.querySelector('.pad-info h2').textContent = padName;
+    document.title = 'Share Pad - ' + padName;
+  </script>
+</body>
+</html>

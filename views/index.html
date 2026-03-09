@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Pad</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-content">
+    <section class="hero">
+      <h1>Share Pad</h1>
+      <p>Type a name. Access it anywhere.</p>
+      <form class="hero-form">
+        <input type="text" id="pad-name" placeholder="Name your pad">
+        <button type="submit">Create Pad</button>
+      </form>
+    </section>
+  </div>
+  <nav class="nav-bar">
+    <a href="/" class="active">Home</a>
+    <a href="/about">About</a>
+  </nav>
+  <script>
+    document.querySelector('.hero-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const padName = document.getElementById('pad-name').value.trim();
+      if (padName) {
+        window.location.href = '/' + padName;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Pad - <%= pad.name %></title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-content">
+    <div class="pad-container">
+
+      <form class="pad-editor" method="POST" action="/<%= pad.name %>">
+        <textarea id="pad-textarea" name="content" placeholder="Start typing your note..."><%= pad.content %></textarea>
+
+        <div class="pad-info">
+          <h2><%= pad.name %></h2>
+          <p>Status: <% if (isNew) { %>New pad<% } else { %>Last saved <%= pad.updatedAt.toLocaleString() %><% } %></p>
+          <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+      </form>
+
+      <% if (!isNew) { %>
+      <form method="POST" action="/<%= pad.name %>/delete" style="margin-top: 12px;">
+        <button class="btn" type="submit"
+          style="background:#3a1a1a; color:#e07070;"
+          onclick="return confirm('Delete this pad?')">
+          Delete pad
+        </button>
+      </form>
+      <% } %>
+
+    </div>
+  </div>
+  <nav class="nav-bar">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+  </nav>
+</body>
+</html>

@@ -20,12 +20,6 @@ npm start
 
 Open http://localhost:3000.
 
-## Deploy
-
-- **Database:** MongoDB Atlas (M0 free tier is enough).
-- **Host:** Render web service. Build command `npm install`, start command `npm start`.
-- Set `MONGO_URI` in the Render environment — include the database name (`/sharepad`) in the connection string.
-
 ## Pages
 
 - `/` — pick a pad name

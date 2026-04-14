@@ -1,14 +1,33 @@
 # Share Pad
-A simple notepad website where you pick a name for your pad and can access it from any device. Built for SE_19 Web Technologies Basics and SE_01
-it is inspired by [ZumPad](https://zumpad.zum.de/)
 
+A small notepad app where you pick a name for a pad at `/any-name` and can open it from any device. Inspired by [ZumPad](https://zumpad.zum.de/).
 
-## How to run
+Built for SE_19 Web Technologies Basics / SE_01.
 
-Just open `index.html` in your browser.
+## Stack
+
+- Node.js + Express
+- EJS templates
+- MongoDB via Mongoose
+
+## Run locally
+
+```bash
+npm install
+cp .env.example .env   # then fill in MONGO_URI
+npm start
+```
+
+Open http://localhost:3000.
+
+## Deploy
+
+- **Database:** MongoDB Atlas (M0 free tier is enough).
+- **Host:** Render web service. Build command `npm install`, start command `npm start`.
+- Set `MONGO_URI` in the Render environment — include the database name (`/sharepad`) in the connection string.
 
 ## Pages
 
-- **Home** (`index.html`) - landing page where you create a new pad
-- **About** (`about.html`) - explains how Share Pad works
-- **Pad** (`pad.html`) - the actual notepad editor
+- `/` — pick a pad name
+- `/about` — short explanation
+- `/:padName` — view or edit a pad

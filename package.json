@@ -1,9 +1,11 @@
 {
-  "name": "web_technologies_basics_se_19_se_01",
+  "name": "share-pad",
   "version": "1.0.0",
-  "description": "A simple notepad website where you pick a name for your pad and can access it from any device. Built for SE_19 Web Technologies Basics and SE_01 it is inspired by [ZumPad](https://zumpad.zum.de/)",
-  "main": "index.js",
+  "description": "A simple notepad website where you pick a name for your pad and can access it from any device. Built for SE_19 Web Technologies Basics and SE_01, inspired by ZumPad.",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,7 +20,11 @@
     "url": "https://github.com/Johannes4044/Share-Pad-SE_19-01/issues"
   },
   "homepage": "https://github.com/Johannes4044/Share-Pad-SE_19-01#readme",
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
+    "dotenv": "^16.6.1",
     "ejs": "^5.0.1",
     "express": "^5.2.1",
     "mongoose": "^9.3.3"

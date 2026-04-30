@@ -16,6 +16,7 @@
         <div class="pad-info">
           <h2><%= pad.name %></h2>
           <p>Status: <% if (isNew) { %>New pad<% } else { %>Last saved <%= pad.updatedAt.toLocaleString() %><% } %></p>
+          <p id="save-status"></p>
           <button class="btn btn-primary" type="submit">Save</button>
         </div>
       </form>
@@ -36,5 +37,30 @@
     <a href="/">Home</a>
     <a href="/about">About</a>
   </nav>
+  <script>
+    const textarea = document.getElementById('pad-textarea');
+    const status = document.getElementById('save-status');
+    let timer;
+
+    textarea.addEventListener('input', function() {
+      clearTimeout(timer);
+      status.textContent = '';
+      timer = setTimeout(save, 1000);
+    });
+
+    function save() {
+      status.textContent = 'Saving…';
+      fetch(location.pathname, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: textarea.value })
+      }).then(function(r) {
+        if (!r.ok) throw new Error();
+        status.textContent = 'Saved';
+      }).catch(function() {
+        status.textContent = 'Save failed';
+      });
+    }
+  </script>
 </body>
 </html>

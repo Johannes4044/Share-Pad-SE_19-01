@@ -225,6 +225,13 @@ p {
   margin-bottom: 20px;
 }
 
+#save-status {
+  font-size: 13px;
+  color: #888;
+  min-height: 18px;
+  margin-bottom: 12px;
+}
+
 .btn {
   display: inline-block;
   padding: 12px 24px;

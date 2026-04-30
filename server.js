@@ -22,6 +22,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Home
 app.get('/', (req, res) => res.render('index'));
@@ -38,7 +39,7 @@ app.get('/:padName', async (req, res) => {
   });
 });
 
-// CREATE / UPDATE 
+// CREATE / UPDATE
 app.post('/:padName', async (req, res) => {
   await Pad.findOneAndUpdate(
     { name: req.params.padName },
@@ -48,7 +49,17 @@ app.post('/:padName', async (req, res) => {
   res.redirect('/' + req.params.padName);
 });
 
-// DELETE 
+// SAVE (json)
+app.put('/:padName', async (req, res) => {
+  await Pad.findOneAndUpdate(
+    { name: req.params.padName },
+    { name: req.params.padName, content: req.body.content },
+    { upsert: true }
+  );
+  res.json({ ok: true });
+});
+
+// DELETE
 app.post('/:padName/delete', async (req, res) => {
   await Pad.findOneAndDelete({ name: req.params.padName });
   res.redirect('/');
